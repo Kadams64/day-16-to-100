@@ -1,10 +1,11 @@
 class User:
-    pass
+    def __init__(self, user_id, user_name):
+        self.user_id = user_id
+        self.user_name = user_name
+        self.followers = 0 # default value
 
-user_1 = User()
+user_1 = User("001", "angela")
 
-# this seems like a rather craptastic way to define class attributes
-user_1.id = "001"
-user_1.user_name = "angela"
+# this seems is a bit cleaner
 
 print(user_1.user_name)
