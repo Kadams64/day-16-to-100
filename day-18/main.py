@@ -1,7 +1,8 @@
-from turtle import Turtle, Screen
+import turtle as t
 import random
 
-timmy = Turtle()
+t.colormode(255)
+timmy = t.Turtle()
 timmy.shape("turtle")
 timmy.color("black", "green") # pen and fill colours
 
@@ -16,7 +17,12 @@ timmy.color("black", "green") # pen and fill colours
 #     timmy.penup()
 #     timmy.forward(10)
 
-color_list = ["red", "blue", "green", "purple", "orange", "hotpink", "gold"]
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0,255)
+    b = random.randint(0, 255)
+
+    return r, g, b # separate values with commas to return a tuple
 
 def random_angle():
     angle_list = [0, 90, 180, 270]
@@ -25,10 +31,10 @@ def random_angle():
 timmy.pensize(10)
 timmy.speed("fastest")
 for _ in range(200 ):
-    timmy.color(random.choice(color_list))
+    timmy.color(random_color())
     timmy.setheading(random_angle())
     timmy.forward(20)
 
 
-screen = Screen()
+screen = t.Screen()
 screen.exitonclick()
