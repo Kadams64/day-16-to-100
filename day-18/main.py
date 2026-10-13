@@ -28,12 +28,21 @@ def random_angle():
     angle_list = [0, 90, 180, 270]
     return random.choice(angle_list)
 
-timmy.pensize(10)
+def draw_spiro(shift):
+    for _ in range(int(360 / shift)):
+        timmy.color(random_color())
+        timmy.circle(100)
+        # could have used heading here
+        timmy.left(shift)
+
+# reposition the turtle near the center
+timmy.penup()
+timmy.goto(300,-300)
+timmy.pendown()
+
 timmy.speed("fastest")
-for _ in range(200 ):
-    timmy.color(random_color())
-    timmy.setheading(random_angle())
-    timmy.forward(20)
+rotate = 5
+draw_spiro(rotate)
 
 
 screen = t.Screen()
