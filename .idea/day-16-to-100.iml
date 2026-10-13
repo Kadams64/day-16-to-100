@@ -7,6 +7,7 @@
     </content>
     <content url="file://$MODULE_DIR$/day-16-oop-coffee-machine" />
     <content url="file://$MODULE_DIR$/day-17" />
+    <content url="file://$MODULE_DIR$/day-17-quiz-game" />
     <content url="file://$MODULE_DIR$/day-18" />
     <orderEntry type="jdk" jdkName="~/PycharmProjects/day-16-to-100/day-16/.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
