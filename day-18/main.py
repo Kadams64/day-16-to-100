@@ -18,15 +18,16 @@ timmy.color("black", "green") # pen and fill colours
 
 color_list = ["red", "blue", "green", "purple", "orange", "hotpink", "gold"]
 
-def draw_shape(num_sides):
-    angle = 360/num_sides
-    for _ in range(1, num_sides +1):
-        timmy.right(angle)
-        timmy.forward(100)
+def random_angle():
+    angle_list = [0, 90, 180, 270]
+    return random.choice(angle_list)
 
-for sides in range(3,10 + 1):
+timmy.pensize(10)
+timmy.speed("fastest")
+for _ in range(200 ):
     timmy.color(random.choice(color_list))
-    draw_shape(sides)
+    timmy.setheading(random_angle())
+    timmy.forward(20)
 
 
 screen = Screen()
