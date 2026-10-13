@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/day-15-Coffee Machine Project" />
+    <content url="file://$MODULE_DIR$/day-15-Coffee Machine Project">
+      <excludeFolder url="file://$MODULE_DIR$/day-15-Coffee Machine Project/.venv" />
+    </content>
     <content url="file://$MODULE_DIR$/day-16">
       <excludeFolder url="file://$MODULE_DIR$/day-16/.venv" />
     </content>
@@ -10,7 +12,7 @@
     <content url="file://$MODULE_DIR$/day-17-quiz-game" />
     <content url="file://$MODULE_DIR$/day-18" />
     <content url="file://$MODULE_DIR$/day-18-hirst-painting" />
-    <orderEntry type="jdk" jdkName="~/PycharmProjects/day-16-to-100/day-16/.venv" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="~/PycharmProjects/day-16-to-100/venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
