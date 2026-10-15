@@ -1,31 +1,38 @@
 from turtle import Turtle, Screen
+from tkinter import simpledialog
 
-tim = Turtle()
 screen = Screen()
+screen.setup(width=500,height=400)
+#choice = screen.textinput(title= "Make your bet", prompt="Which turtle do you bet on? Enter a colour: ")
+#choice = simpledialog.askstring(title= "Make your bet", prompt="Which turtle do you bet on? Enter a colour: ")
+# above TK related calls fail with an error of the form:
+#     w.tk.call("::tk::unsupported::MacWindowStyle", "style",
+#     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#               w, "moveableModal", "")
+#               ^^^^^^^^^^^^^^^^^^^^^^^
+# _tkinter.TclError: invalid command name "::tk::unsupported::MacWindowStyle"
+# this is apparently a known issue with python-tk and version 9 of the TK libraries
+turtles = {}
 
-def move_forward():
-    tim.forward(10)
-
-def move_backward():
-    tim.backward(10)
-
-def turn_left():
-    tim.left(5)
-
-def turn_right():
-    tim.right(5)
-
-def clearscreen():
-    tim.clear()
-    tim.penup()
-    tim.home()
-    tim.pendown()
+def create_turtle(c, starty):
+    turtle = Turtle(shape="turtle")
+    turtle.color(c)
+    turtles[c]= turtle
+    turtles[c].penup()
+    turtles[c].goto(x=-180, y=starty)
 
 
-screen.listen()
-screen.onkey(key="w", fun=move_forward)
-screen.onkey(key="s", fun=move_backward)
-screen.onkey(key="a", fun=turn_left)
-screen.onkey(key="d", fun=turn_right)
-screen.onkey(key="c", fun=clearscreen)
+
+choice = input("Which turtle do you bet on? Enter a colour: ").lower()
+print(choice)
+colors = ["red", "orange", "yellow", "green", "blue", "purple"]
+
+y = -150
+for color in colors:
+    create_turtle(color, y)
+    y += 30
+
+print(turtles)
+turtles["red"].forward(30)
+
 screen.exitonclick()
