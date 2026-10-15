@@ -1,3 +1,4 @@
+import random
 from turtle import Turtle, Screen
 from tkinter import simpledialog
 
@@ -21,13 +22,11 @@ turtles = {}
 def create_turtle(c, starty):
     turtle = Turtle(shape="turtle")
     turtle.color(c)
+    # populate turtles dictionary
     turtles[c]= turtle
     turtles[c].penup()
     turtles[c].goto(x=-180, y=starty)
 
-
-
-choice = input("Which turtle do you bet on? Enter a colour: ").lower()
 print(choice)
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 
@@ -36,7 +35,22 @@ for color in colors:
     create_turtle(color, y)
     y += 30
 
-print(turtles)
-turtles["red"].forward(30)
+is_race_on = False
+
+if choice in colors:
+    is_race_on = True
+
+while is_race_on:
+    for key, value in turtles.items():
+        # width of turtle is 40, width of screen is 250, turtle contact is measured from
+        # turtle center
+        if value.xcor() > 230:
+            winning_color = key # could alternately use turtle (value).pencolor
+            if winning_color == choice:
+                print(f"You've won!  The {winning_color} turtle is the winner!")
+            else:
+                print(f"You've lost!  The {winning_color} turtle is the winner!")
+            is_race_on = False
+        value.forward(random.randint(0,10))
 
 screen.exitonclick()

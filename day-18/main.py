@@ -37,7 +37,7 @@ def draw_spiro(shift):
 
 # reposition the turtle near the center
 timmy.penup()
-timmy.goto(300,-300)
+timmy.goto(0,0)
 timmy.pendown()
 
 timmy.speed("fastest")

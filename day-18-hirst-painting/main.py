@@ -28,7 +28,7 @@ t.colormode(255)
 
 def start_position():
     tim.penup()
-    tim.goto(-150, -500)
+    tim.goto(-150, -200)
 
 def draw_circle():
     random_colour = random.choice(color_list)
