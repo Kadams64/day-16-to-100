@@ -3,6 +3,7 @@ from turtle import Turtle, Screen
 from tkinter import simpledialog
 
 screen = Screen()
+screen.title("Turtle Race!")
 screen.setup(width=500,height=400)
 
 # I was able to get this to work by installing Python from the official python
@@ -44,6 +45,7 @@ while is_race_on:
     for key, value in turtles.items():
         # width of turtle is 40, width of screen is 250, turtle contact is measured from
         # turtle center
+        value.forward(random.randint(0,10))
         if value.xcor() > 230:
             winning_color = key # could alternately use turtle (value).pencolor
             if winning_color == choice:
@@ -51,6 +53,7 @@ while is_race_on:
             else:
                 print(f"You've lost!  The {winning_color} turtle is the winner!")
             is_race_on = False
-        value.forward(random.randint(0,10))
+            break # exit the for loop early so we don't end up with multiple winners
+
 
 screen.exitonclick()
