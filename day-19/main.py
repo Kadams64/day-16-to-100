@@ -3,7 +3,10 @@ from tkinter import simpledialog
 
 screen = Screen()
 screen.setup(width=500,height=400)
-#choice = screen.textinput(title= "Make your bet", prompt="Which turtle do you bet on? Enter a colour: ")
+
+# I was able to get this to work by installing Python from the official python
+# downloads page => https://www.python.org/downloads/
+choice = screen.textinput(title= "Make your bet", prompt="Which turtle do you bet on? Enter a colour: ")
 #choice = simpledialog.askstring(title= "Make your bet", prompt="Which turtle do you bet on? Enter a colour: ")
 # above TK related calls fail with an error of the form:
 #     w.tk.call("::tk::unsupported::MacWindowStyle", "style",
@@ -12,6 +15,7 @@ screen.setup(width=500,height=400)
 #               ^^^^^^^^^^^^^^^^^^^^^^^
 # _tkinter.TclError: invalid command name "::tk::unsupported::MacWindowStyle"
 # this is apparently a known issue with python-tk and version 9 of the TK libraries
+
 turtles = {}
 
 def create_turtle(c, starty):
