@@ -24,6 +24,9 @@ screen.onkey(snake.right, "Right")
 
 game_running = True
 food_eaten = 0
+# make the snake longer to help test snake collisions
+# for _ in range(20):
+#     snake.extend()
 
 while game_running:
     screen.update()
