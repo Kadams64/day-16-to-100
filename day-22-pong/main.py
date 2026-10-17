@@ -26,6 +26,8 @@ screen.onkey(fun= p_right.move_down, key="Down")
 screen.onkey(fun= p_left.move_up, key="w")
 screen.onkey(fun= p_left.move_down, key="s")
 
+# the course material makes the timer a property of the ball
+# it probably belongs there, but I did it differently
 timer = 0.015
 game_on = True
 while game_on:
@@ -48,10 +50,13 @@ while game_on:
     if ball.xcor() > 380:
         ball.reset()
         score.l_point()
+        timer = 0.015 # reset the timer so the ball doesn't start off fast
 
+    # detect out of bounds ball right
     if ball.xcor() < -380:
         ball.reset()
         score.r_point()
+        timer = 0.015
 
 screen.exitonclick()
 
