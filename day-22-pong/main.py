@@ -5,6 +5,8 @@ from ball import Ball
 
 from wcwidth import width
 
+from scoreboard import Scoreboard
+
 screen = Screen()
 screen.setup(width= 800, height=600)
 screen.bgcolor("black")
@@ -14,6 +16,8 @@ screen.tracer(0)
 p_right = Paddle(loc=(350,0))
 p_left = Paddle(loc=(-350,0))
 ball = Ball()
+score = Scoreboard()
+
 
 screen.listen()
 
@@ -24,11 +28,11 @@ screen.onkey(fun= p_right.move_down, key="Down")
 screen.onkey(fun= p_left.move_up, key="w")
 screen.onkey(fun= p_left.move_down, key="s")
 
-
+timer = 0.015
 game_on = True
 while game_on:
     screen.update()
-    time.sleep(0.01)
+    time.sleep(timer)
     # ball.ball_move((ball.xcor() + 1, ball.ycor() + 1))
     ball.move()
 
@@ -36,17 +40,20 @@ while game_on:
     if ball.ycor() > 290 or ball.ycor() < -290:
         ball.bounce_y()
 
-    # detect right paddle collision
+    # detect paddle collision
     if (ball.distance(p_right) < 50 and ball.xcor() > 340
             or ball.distance(p_left) < 50 and ball.xcor() < -340):
         ball.bounce_x()
+        timer *= 0.8
 
-    # detect out of bounds ball
+    # detect out of bounds ball right
     if ball.xcor() > 380:
         ball.reset()
+        score.l_point()
 
     if ball.xcor() < -380:
         ball.reset()
+        score.r_point()
 
 screen.exitonclick()
 
