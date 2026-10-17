@@ -3,8 +3,6 @@ from turtle import Screen, Turtle
 from paddle import Paddle
 from ball import Ball
 
-from wcwidth import width
-
 from scoreboard import Scoreboard
 
 screen = Screen()
