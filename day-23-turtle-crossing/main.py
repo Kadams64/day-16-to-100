@@ -7,8 +7,18 @@ from scoreboard import Scoreboard
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
+player = Player()
+car_manager = CarManager()
+
 
 game_is_on = True
+screen.listen()
+screen.onkey(fun= player.move_up, key="Up")
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+
+    car_manager.random_car()
+    car_manager.move_cars()
+
+screen.exitonclick()
