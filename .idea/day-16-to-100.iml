@@ -19,7 +19,8 @@
     <content url="file://$MODULE_DIR$/day-24-files" />
     <content url="file://$MODULE_DIR$/day-24-mailmerge" />
     <content url="file://$MODULE_DIR$/day-24-snake" />
-    <content url="file://$MODULE_DIR$/day-25-csv-weather" />
+    <content url="file://$MODULE_DIR$/day-25-csv-end" />
+    <content url="file://$MODULE_DIR$/day-25-csv-start" />
     <orderEntry type="jdk" jdkName="~/PycharmProjects/day-16-to-100/.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
