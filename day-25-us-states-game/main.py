@@ -36,6 +36,9 @@ while game_on:
     # convert the answer to Title case to match the csv
     answer_state = answer_state.title()
 
+    if answer_state == "Exit":
+        break
+
     # check if guess is in list of previous correct answers
     if answer_state not in correct_answers:
         # check if the guess is among the 50 states in the csv
@@ -59,4 +62,14 @@ while game_on:
             # keep track of the score
             score += 1
 
-screen.exitonclick()
+# states_to_learn.csv
+# start with the full list as a list of states
+full_list = data["state"].to_list()
+states_to_learn = []
+for answer in full_list:
+    if answer not in correct_answers:
+        states_to_learn.append(answer)
+# write list to csv using panda
+
+dataframe = pandas.DataFrame(states_to_learn, columns=["states_to_learn"])
+dataframe.to_csv("states_to_learn.csv")
