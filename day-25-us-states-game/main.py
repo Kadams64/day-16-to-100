@@ -65,10 +65,12 @@ while game_on:
 # states_to_learn.csv
 # start with the full list as a list of states
 full_list = data["state"].to_list()
-states_to_learn = []
-for answer in full_list:
-    if answer not in correct_answers:
-        states_to_learn.append(answer)
+
+# replace with list comprehension from day 26
+states_to_learn = [answer for answer in full_list if answer not in correct_answers]
+# for answer in full_list:
+#     if answer not in correct_answers:
+#         states_to_learn.append(answer)
 # write list to csv using panda
 
 dataframe = pandas.DataFrame(states_to_learn, columns=["states_to_learn"])
