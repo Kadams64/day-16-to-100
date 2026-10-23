@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/day-15-Coffee Machine Project">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/day-15-Coffee Machine Project/.venv" />
     </content>
-    <content url="file://$MODULE_DIR$/day-16">
-      <excludeFolder url="file://$MODULE_DIR$/day-16/.venv" />
-    </content>
-    <content url="file://$MODULE_DIR$/day-16-oop-coffee-machine" />
-    <content url="file://$MODULE_DIR$/day-17" />
-    <content url="file://$MODULE_DIR$/day-17-quiz-game" />
-    <content url="file://$MODULE_DIR$/day-18" />
-    <content url="file://$MODULE_DIR$/day-18-hirst-painting" />
-    <content url="file://$MODULE_DIR$/day-19" />
-    <content url="file://$MODULE_DIR$/day-20+21-snake-game" />
-    <content url="file://$MODULE_DIR$/day-22-pong" />
-    <content url="file://$MODULE_DIR$/day-23-turtle-crossing" />
-    <content url="file://$MODULE_DIR$/day-24-files" />
-    <content url="file://$MODULE_DIR$/day-24-mailmerge" />
-    <content url="file://$MODULE_DIR$/day-24-snake" />
-    <content url="file://$MODULE_DIR$/day-25-csv-end" />
-    <content url="file://$MODULE_DIR$/day-25-csv-start" />
-    <content url="file://$MODULE_DIR$/day-25-us-states-game" />
-    <content url="file://$MODULE_DIR$/day-26-NATO-alphabet" />
-    <content url="file://$MODULE_DIR$/day-27" />
-    <content url="file://$MODULE_DIR$/day-27-miles-to-km" />
-    <content url="file://$MODULE_DIR$/day-28-pomodoro" />
-    <content url="file://$MODULE_DIR$/day-29-password-manager" />
     <orderEntry type="jdk" jdkName="~/PycharmProjects/day-16-to-100/.venv" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
