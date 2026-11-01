@@ -1,9 +1,9 @@
 import datetime
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import requests
 
-load_dotenv("/Users/kellyadams/PycharmProjects/day-16-to-100/.env")
+load_dotenv(find_dotenv())
 
 class FlightSearch:
     # This class is responsible for talking to the Flight Search API.

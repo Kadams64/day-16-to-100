@@ -1,6 +1,7 @@
 from data_manager import DataManager
 from flight_search import FlightSearch
 import flight_data as fd
+from notification_manager import NotificationManager
 from pprint import pprint
 import requests_cache
 from datetime import datetime, timedelta
@@ -33,10 +34,16 @@ for destination in sheet_data:
     print(destination_iata)
     flight_json = flights.check_flights(origin_city="YVR", destination_city=destination_iata,
                                         from_time=today, to_time=six_months_hence)
-    pprint(flight_json)
-    cheapest_flight = fd.find_cheapest_flight(flight_json, six_months_hence)
+    # pprint(flight_json)
+    cheapest_flight = fd.find_cheapest_flight(flight_json, six_months_hence.strftime("%Y-%m-%d"))
+
     # print(f"origin= {cheapest_flight.origin_airport}; destination={cheapest_flight.destination_airport}")
     if (cheapest_flight.price != "N/A" and
             int(cheapest_flight.price) < int(destination["lowestPrice"])):
         print("New lowest price found!")
         dm.update_lowest_price(row_id=destination["id"], new_price=cheapest_flight.price)
+        notify = NotificationManager(price= cheapest_flight.price,
+                                     depart= cheapest_flight.origin_airport ,
+                                     arrival= cheapest_flight.destination_airport ,
+                                     outbound= cheapest_flight.depart_date, inbound= cheapest_flight.return_date)
+        notify.send_message()

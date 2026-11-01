@@ -1,4 +1,5 @@
 import datetime
+from pprint import pprint
 
 
 class FlightData:
@@ -30,7 +31,6 @@ def find_cheapest_flight(data, return_date: datetime.datetime):
     origin = first_flight["flights"][0]["departure_airport"]["id"]
     destination = first_flight["flights"][-1]["arrival_airport"]["id"]
     out_date = first_flight["flights"][0]["departure_airport"]["time"].split(" ")[0]
-    print(lowest_price)
 
     cheapest_flight = FlightData(lowest_price, origin, destination, out_date, return_date)
     for flight in flights_to_process:
