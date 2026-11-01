@@ -3,7 +3,7 @@ import datetime
 
 class FlightData:
     #This class is responsible for structuring the flight data.
-    def __index__(self, price, origin_airport, destination_airport,
+    def __init__(self, price, origin_airport, destination_airport,
                   departure_date, return_date):
         self.price = price
         self.origin_airport = origin_airport
@@ -18,13 +18,35 @@ def find_cheapest_flight(data, return_date: datetime.datetime):
 
     flights_best = data.get("best_flights", [])
     flights_to_process = (flights_best) + (flights_other)
-
+    if len(flights_to_process) == 0:
+        print("No flight data to process.")
+        return FlightData("N/A", "N/A", "N/A",
+                          "N/A", "N/A")
     # end result in flights_to_process is a combined list without any errors on
     # missing keys
 
-    print(len(flights_to_process))
+    first_flight = flights_to_process[0]
+    lowest_price = first_flight["price"]
+    origin = first_flight["flights"][0]["departure_airport"]["id"]
+    destination = first_flight["flights"][-1]["arrival_airport"]["id"]
+    out_date = first_flight["flights"][0]["departure_airport"]["time"].split(" ")[0]
+    print(lowest_price)
+
+    cheapest_flight = FlightData(lowest_price, origin, destination, out_date, return_date)
     for flight in flights_to_process:
-        # cheating now looking at the solution because of frustrations
-        # in the house
-        pass
+        # Exception handling - json has data but flight is missing 'price'. Skip.
+        try:
+            price = flight["price"]
+        except KeyError:
+            print("--- No price available for flight. ---")
+            continue
+        if price < lowest_price:
+            lowest_price = price
+            origin = flight["flights"][0]["departure_airport"]["id"]
+            destination = flight["flights"][-1]["arrival_airport"]["id"]
+            out_date = flight["flights"][0]["departure_airport"]["time"].split(" ")[0]
+            cheapest_flight = FlightData(lowest_price, origin, destination, out_date, return_date)
+            print(f"Lowest price to {destination} is CAD {lowest_price}")
+
+    return cheapest_flight
 

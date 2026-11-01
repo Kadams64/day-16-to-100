@@ -30,3 +30,4 @@ flight_json = flights.check_flights(origin_city="YVR", destination_city="JFK",
                                     from_time=today, to_time=six_months_hence)
 
 cheapest_flight = fd.find_cheapest_flight(flight_json, six_months_hence)
+print(f"origin= {cheapest_flight.origin_airport}; destination={cheapest_flight.destination_airport}")
