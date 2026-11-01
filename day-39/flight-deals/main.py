@@ -1,5 +1,6 @@
 from data_manager import DataManager
 from flight_search import FlightSearch
+import flight_data as fd
 from pprint import pprint
 import requests_cache
 from datetime import datetime, timedelta
@@ -28,15 +29,4 @@ six_months_hence = today + timedelta(days=182)
 flight_json = flights.check_flights(origin_city="YVR", destination_city="JFK",
                                     from_time=today, to_time=six_months_hence)
 
-# some logic to add the two lists of flights from the dictionary together
-
-flights_other = flight_json.get("other_flights", [])
-
-flights_best = flight_json.get("best_flights", [])
-flights_to_process = (flights_best) + (flights_other)
-
-# end result in flights_to_process is a combined list without any errors on
-# missing keys
-print(flights_best)
-
-print(flights_to_process)
+cheapest_flight = fd.find_cheapest_flight(flight_json, six_months_hence)

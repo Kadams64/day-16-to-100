@@ -1,10 +1,10 @@
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 import requests
 
 
 
-load_dotenv("/Users/kellyadams/PycharmProjects/day-16-to-100/.env")
+load_dotenv(find_dotenv())
 SHEETY_ENDPOINT = os.environ.get("SHEETY_ENDPOINT_FLIGHTS")
 SHEETY_TOKEN = os.environ.get("SHEETY_TOKEN")
 
