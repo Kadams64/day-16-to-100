@@ -23,3 +23,15 @@ class DataManager:
         response.raise_for_status()
         self.sheet = response.json()["prices"]
         return self.sheet
+
+    def update_lowest_price(self, row_id, new_price):
+        row_url = f"{SHEETY_ENDPOINT}/{row_id}"
+        params = {
+            "price": {
+                "lowestPrice" : new_price
+            }
+        }
+        response = requests.put(url=row_url,
+                                json=params,
+                                 headers=self.sheety_headers)
+        response.raise_for_status()

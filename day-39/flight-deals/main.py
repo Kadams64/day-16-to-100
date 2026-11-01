@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 # for one hour
 requests_cache.install_cache(
     "flights_cache",
-    expire_after=600,
+    expire_after=300,
     urls_expire_after={
         "serpapi.com": 3600,
     },
@@ -23,11 +23,20 @@ dm = DataManager()
 flights = FlightSearch()
 
 sheet_data = dm.get_prices()
-pprint(sheet_data)
+
 today = datetime.now()
 six_months_hence = today + timedelta(days=182)
-flight_json = flights.check_flights(origin_city="YVR", destination_city="JFK",
-                                    from_time=today, to_time=six_months_hence)
 
-cheapest_flight = fd.find_cheapest_flight(flight_json, six_months_hence)
-print(f"origin= {cheapest_flight.origin_airport}; destination={cheapest_flight.destination_airport}")
+for destination in sheet_data:
+    # destination = sheet_data[1]
+    destination_iata = destination["iataCode"]
+    print(destination_iata)
+    flight_json = flights.check_flights(origin_city="YVR", destination_city=destination_iata,
+                                        from_time=today, to_time=six_months_hence)
+    pprint(flight_json)
+    cheapest_flight = fd.find_cheapest_flight(flight_json, six_months_hence)
+    # print(f"origin= {cheapest_flight.origin_airport}; destination={cheapest_flight.destination_airport}")
+    if (cheapest_flight.price != "N/A" and
+            int(cheapest_flight.price) < int(destination["lowestPrice"])):
+        print("New lowest price found!")
+        dm.update_lowest_price(row_id=destination["id"], new_price=cheapest_flight.price)
