@@ -3,7 +3,6 @@ from dotenv import load_dotenv, find_dotenv
 import requests
 
 
-
 load_dotenv(find_dotenv())
 SHEETY_ENDPOINT = os.environ.get("SHEETY_ENDPOINT_FLIGHTS")
 SHEETY_TOKEN = os.environ.get("SHEETY_TOKEN")

@@ -1,26 +1,30 @@
 import os
+from pprint import pprint
+
 import requests
-from requests.auth import HTTPBasicAuth
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 # Load environment variables from .env file
-load_dotenv()
+load_dotenv(find_dotenv())
 
 SHEETY_PRICES_ENDPOINT = os.environ["SHEETY_PRICES_ENDPOINT"]
+SHEETY_USERS_ENDPOINT = os.environ.get("SHEETY_ENDPOINT_USERS")
+SHEETY_TOKEN = os.environ.get("SHEETY_TOKEN")
 
 class DataManager:
 
     def __init__(self):
-        self._user = os.environ["SHEETY_USERNAME"]
-        self._password = os.environ["SHEETY_PASSWORD"]
-        self._authorization = HTTPBasicAuth(self._user, self._password)
+        self.sheety_headers = {
+            "Authorization": f"Bearer {SHEETY_TOKEN}"
+        }
         self.destination_data = {}
 
     def get_destination_data(self):
-        response = requests.get(url=SHEETY_PRICES_ENDPOINT, auth=self._authorization)
-        data = response.json()
-        self.destination_data = data["prices"]
-        return self.destination_data
+        response = requests.get(url=SHEETY_PRICES_ENDPOINT,
+                                headers=self.sheety_headers)
+        response.raise_for_status()
+        sheet = response.json()["prices"]
+        return sheet
 
     # ==================== Updated the price in the spreadsheet ====================
 
@@ -33,5 +37,11 @@ class DataManager:
         requests.put(
             url=f"{SHEETY_PRICES_ENDPOINT}/{row_id}",
             json=new_data,
-            auth=self._authorization
+            headers=self.sheety_headers
         )
+    def get_customer_emails(self):
+        response = requests.get(url=SHEETY_USERS_ENDPOINT,
+                                headers=self.sheety_headers)
+        response.raise_for_status()
+        sheet = response.json()["users"]
+        return sheet
