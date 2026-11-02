@@ -2,3 +2,33 @@ env
 .env
 .env.local
 .env.*
+*.pyc
+__pycache__/
+.DS_Store
+day-24-mailmerge/Output/ReadyToSend/letter_for_Aang
+day-24-mailmerge/Output/ReadyToSend/letter_for_Appa
+day-24-mailmerge/Output/ReadyToSend/letter_for_Katara
+day-24-mailmerge/Output/ReadyToSend/letter_for_Momo
+day-24-mailmerge/Output/ReadyToSend/letter_for_Sokka
+day-24-mailmerge/Output/ReadyToSend/letter_for_Toph
+day-24-mailmerge/Output/ReadyToSend/letter_for_Uncle Iroh
+day-24-mailmerge/Output/ReadyToSend/letter_for_Zuko
+day-25-csv-end/squirrel_count_new.csv
+day-25-csv-start/new_data.csv
+day-25-us-states-game/states_to_learn.csv
+day-28-pomodoro/pomodoro.app/Contents/document.wflow
+day-28-pomodoro/pomodoro.app/Contents/Info.plist
+day-28-pomodoro/pomodoro.app/Contents/_CodeSignature/CodeResources
+day-28-pomodoro/pomodoro.app/Contents/MacOS/Automator Application Stub
+day-28-pomodoro/pomodoro.app/Contents/Resources/ApplicationStub.icns
+day-28-pomodoro/pomodoro.app/Contents/Resources/Assets.car
+day-28-pomodoro/pomodoro.app/Contents/Resources/InfoPlist.loctable
+day-29-password-manager/data.txt
+day-30/a_file.txt
+day-30-Password_Manager/data.json
+day-31-flash-card-project/data/words_to_learn.csv
+day-32/main_run.py
+day-32-birthday-wisher/main_run.py
+day-33/issoverhead/main_run.py
+day-35/rain-alert/main_run.py
+day-40/flight_cache.sqlite
