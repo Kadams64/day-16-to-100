@@ -61,7 +61,9 @@ matches = []
 for song in songs:
     title = song.text
     try:
-        matches = yt.search(query=title, filter="songs")
+        matches = yt.search(query=title, filter="songs", limit=1)
+        # print(matches)
+        yt.add_playlist_items(playlistId=playlist_id, videoIds=[matches[0]["videoId"]])
+        print(f"added: {title}")
     except Exception as e:
         print(e)
-print(matches)
