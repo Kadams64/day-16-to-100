@@ -46,7 +46,8 @@ playlist_id = None
 for playlist in playlists:
     if playlist_name == playlist["title"]:
         playlist_exists = True
-        playlist_id = playlist["id"]
+        playlist_id = playlist["playlistId"]
+        print(playlist_id)
 
 if not playlist_exists:
     playlist_id = yt.create_playlist(
@@ -56,9 +57,11 @@ if not playlist_exists:
 else:
     print("Playlist already exists.")
 
+matches = []
 for song in songs:
     title = song.text
     try:
         matches = yt.search(query=title, filter="songs")
     except Exception as e:
         print(e)
+print(matches)
